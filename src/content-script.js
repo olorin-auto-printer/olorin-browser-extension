@@ -5,6 +5,10 @@
 // resolves the logical printer key ('data-printer') from its saved settings
 // and prints silently.
 //
+// A button with data-action="cash-drawer" instead asks the Companion App to
+// kick open the till drawer attached to the printer named by 'data-printer'
+// — no slip content is involved.
+//
 // The click handler is delegated so buttons injected after page load — and
 // Koha's IntranetSlipPrinterJS auto-click — keep working.
 
@@ -17,6 +21,15 @@ document.addEventListener("click", (event) => {
     return;
   }
 
+  if (button.dataset.action === "cash-drawer") {
+    kickDrawer(button);
+    return;
+  }
+
+  printSlip(button);
+});
+
+function printSlip(button) {
   const printer = button.dataset.printer;
   const selector = button.dataset.print;
   if (!printer || !selector) {
@@ -28,7 +41,10 @@ document.addEventListener("click", (event) => {
 
   const target = document.querySelector(selector);
   if (!target) {
-    dispatchResult({ success: false, error: `No element matches selector '${selector}'` });
+    dispatchResult("olorin:print-result", {
+      success: false,
+      error: `No element matches selector '${selector}'`,
+    });
     return;
   }
 
@@ -39,29 +55,52 @@ document.addEventListener("click", (event) => {
     printer: printer,
   };
 
-  chrome.runtime.sendMessage({ type: "websocket-send", payload: message }, (response) => {
+  sendToCompanion(message, "olorin:print-result");
+}
+
+function kickDrawer(button) {
+  const printer = button.dataset.printer;
+  if (!printer) {
+    if (DEBUG) {
+      console.warn("[olorin] cash drawer button is missing data-printer", button);
+    }
+    return;
+  }
+
+  const message = {
+    id: "kick",
+    text: "kick-drawer",
+    printer: printer,
+  };
+
+  sendToCompanion(message, "olorin:drawer-result");
+}
+
+function sendToCompanion(payload, eventName) {
+  chrome.runtime.sendMessage({ type: "websocket-send", payload }, (response) => {
     if (chrome.runtime.lastError) {
-      dispatchResult({ success: false, error: chrome.runtime.lastError.message });
+      dispatchResult(eventName, { success: false, error: chrome.runtime.lastError.message });
       return;
     }
     if (!response || !response.success) {
-      dispatchResult({
+      dispatchResult(eventName, {
         success: false,
         error: (response && response.error) || "No response from the Companion App",
       });
       return;
     }
-    // The companion's own response reports whether the print job succeeded
+    // The companion's own response reports whether the operation succeeded
     const data = response.data || {};
-    dispatchResult({ success: data.success !== false, error: data.error });
+    dispatchResult(eventName, { success: data.success !== false, error: data.error });
   });
-});
+}
 
-// Pages can listen for this to react to print outcomes:
+// Pages can listen for these to react to outcomes:
 //   document.addEventListener('olorin:print-result', (e) => console.log(e.detail))
-function dispatchResult(detail) {
+//   document.addEventListener('olorin:drawer-result', (e) => console.log(e.detail))
+function dispatchResult(eventName, detail) {
   if (DEBUG) {
-    console.log("[olorin] print result", detail);
+    console.log(`[olorin] ${eventName}`, detail);
   }
-  document.dispatchEvent(new CustomEvent("olorin:print-result", { detail }));
+  document.dispatchEvent(new CustomEvent(eventName, { detail }));
 }

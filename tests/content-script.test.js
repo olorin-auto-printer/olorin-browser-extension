@@ -4,7 +4,7 @@ import { chromeMock } from "./helpers/setup.mjs";
 // Importing registers the delegated click listener on the test document
 import "../src/content-script.js";
 
-function addPrintButton({ id = "webPrint", className, printer, print } = {}) {
+function addPrintButton({ id = "webPrint", className, printer, print, action } = {}) {
   const button = document.createElement("button");
   if (id) {
     button.id = id;
@@ -18,8 +18,15 @@ function addPrintButton({ id = "webPrint", className, printer, print } = {}) {
   if (print) {
     button.dataset.print = print;
   }
+  if (action) {
+    button.dataset.action = action;
+  }
   document.body.append(button);
   return button;
+}
+
+function addDrawerButton({ printer } = {}) {
+  return addPrintButton({ id: null, className: "olorinPlugin", printer, action: "cash-drawer" });
 }
 
 function addSlip(html = "<p>slip content</p>") {
@@ -30,9 +37,9 @@ function addSlip(html = "<p>slip content</p>") {
   return slip;
 }
 
-function lastResultEvent() {
+function lastResultEvent(eventName = "olorin:print-result") {
   return new Promise((resolve) => {
-    document.addEventListener("olorin:print-result", (event) => resolve(event.detail), {
+    document.addEventListener(eventName, (event) => resolve(event.detail), {
       once: true,
     });
   });
@@ -142,6 +149,91 @@ describe("content script", () => {
     await expect(result).resolves.toEqual({
       success: false,
       error: "Could not connect to the Companion App",
+    });
+  });
+
+  describe("cash drawer buttons", () => {
+    beforeEach(() => {
+      chromeMock.runtime.sendMessage.mockImplementation((message, callback) =>
+        callback({ success: true, data: { id: "kick", success: true, printer: "P1" } }),
+      );
+    });
+
+    it("sends the kick payload instead of a print message", () => {
+      const button = addDrawerButton({ printer: "receipt_printer" });
+
+      button.click();
+
+      expect(chromeMock.runtime.sendMessage).toHaveBeenCalledWith(
+        {
+          type: "websocket-send",
+          payload: {
+            id: "kick",
+            text: "kick-drawer",
+            printer: "receipt_printer",
+          },
+        },
+        expect.any(Function),
+      );
+    });
+
+    it("dispatches a drawer success result event", async () => {
+      const button = addDrawerButton({ printer: "receipt_printer" });
+      const result = lastResultEvent("olorin:drawer-result");
+
+      button.click();
+
+      await expect(result).resolves.toEqual({ success: true, error: undefined });
+    });
+
+    it("dispatches a drawer failure result when the companion reports an error", async () => {
+      chromeMock.runtime.sendMessage.mockImplementation((message, callback) =>
+        callback({ success: true, data: { id: "kick", success: false, error: "No drawer" } }),
+      );
+      const button = addDrawerButton({ printer: "receipt_printer" });
+      const result = lastResultEvent("olorin:drawer-result");
+
+      button.click();
+
+      await expect(result).resolves.toEqual({ success: false, error: "No drawer" });
+    });
+
+    it("dispatches a drawer failure result when the proxy cannot connect", async () => {
+      chromeMock.runtime.sendMessage.mockImplementation((message, callback) =>
+        callback({ success: false, error: "Could not connect to the Companion App" }),
+      );
+      const button = addDrawerButton({ printer: "receipt_printer" });
+      const result = lastResultEvent("olorin:drawer-result");
+
+      button.click();
+
+      await expect(result).resolves.toEqual({
+        success: false,
+        error: "Could not connect to the Companion App",
+      });
+    });
+
+    it("does nothing when data-printer is missing", () => {
+      const button = addDrawerButton({});
+      const seen = [];
+      document.addEventListener("olorin:drawer-result", (event) => seen.push(event.detail));
+
+      button.click();
+
+      expect(chromeMock.runtime.sendMessage).not.toHaveBeenCalled();
+      expect(seen).toEqual([]);
+    });
+
+    it("leaves ordinary print buttons unaffected", () => {
+      addSlip("<p>Checked out: 3</p>");
+      const button = addPrintButton({ printer: "receipt_printer", print: "#receipt" });
+
+      button.click();
+
+      expect(chromeMock.runtime.sendMessage).toHaveBeenCalledOnce();
+      const payload = chromeMock.runtime.sendMessage.mock.calls[0][0].payload;
+      expect(payload.text).toBe("printer-command");
+      expect(payload.content).toBe("<p>Checked out: 3</p>");
     });
   });
 
