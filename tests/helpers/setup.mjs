@@ -3,6 +3,25 @@
 // registers its message listener once at import time), but call history and
 // socket instances are reset before every test.
 import { beforeEach, vi } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+// The i18n stub reads the real en catalog so tests exercise the real keys
+const enMessages = JSON.parse(
+  fs.readFileSync(
+    path.join(
+      path.dirname(fileURLToPath(import.meta.url)),
+      "..",
+      "..",
+      "src",
+      "_locales",
+      "en",
+      "messages.json",
+    ),
+    "utf8",
+  ),
+);
 
 export class MockWebSocket {
   static instances = [];
@@ -71,6 +90,10 @@ export const chromeMock = {
   permissions: {
     contains: vi.fn((query, callback) => callback(true)),
     request: vi.fn((query, callback) => callback && callback(true)),
+  },
+  i18n: {
+    // Like the real API, a missing key yields an empty string
+    getMessage: (key) => (enMessages[key] && enMessages[key].message) || "",
   },
   tabs: {
     create: vi.fn(),

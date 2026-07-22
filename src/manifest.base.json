@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Olorin",
-  "description": "Prints Koha ILS receipts and labels silently through the Olorin Companion App running on this computer.",
+  "description": "__MSG_extDescription__",
+  "default_locale": "en",
   "icons": {
     "16": "images/icons/icon16.png",
     "32": "images/icons/icon32.png",

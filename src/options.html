@@ -2,38 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Olorin Printer Settings</title>
+    <title data-i18n="optionsTitle">Olorin Printer Settings</title>
     <link rel="stylesheet" type="text/css" href="css/options.css" />
   </head>
   <body>
     <div class="container">
       <div class="top-head">
-        <h1>Printer Settings</h1>
-        <button class="btn btn-primary" id="refresh">Refresh Printers</button>
+        <h1 data-i18n="optionsHeading">Printer Settings</h1>
+        <button class="btn btn-primary" id="refresh" data-i18n="optionsRefreshPrinters">
+          Refresh Printers
+        </button>
       </div>
-      <div id="error-banner" class="error-banner hide">
+      <div id="error-banner" class="error-banner hide" data-i18n="optionsErrorBanner">
         Companion App not reachable — make sure it is running, then click Refresh Printers.
       </div>
       <form id="printer" method="post">
         <div class="label-group">
-          <div class="col printer-col">Printer</div>
-          <div class="col">Page Width</div>
-          <div class="col">Page Height</div>
-          <div class="col">Printer Option</div>
+          <div class="col printer-col" data-i18n="optionsColPrinter">Printer</div>
+          <div class="col" data-i18n="optionsColPageWidth">Page Width</div>
+          <div class="col" data-i18n="optionsColPageHeight">Page Height</div>
+          <div class="col" data-i18n="optionsColPrinterOption">Printer Option</div>
           <div class="col margin-col">
             <div class="margin-wrap mwt">
-              <div class="col full-width">Margin</div>
+              <div class="col full-width" data-i18n="optionsColMargin">Margin</div>
             </div>
             <div class="margin-wrap mwb">
-              <div class="col">Top</div>
-              <div class="col">Bottom</div>
-              <div class="col">Left</div>
-              <div class="col">Right</div>
+              <div class="col" data-i18n="optionsColMarginTop">Top</div>
+              <div class="col" data-i18n="optionsColMarginBottom">Bottom</div>
+              <div class="col" data-i18n="optionsColMarginLeft">Left</div>
+              <div class="col" data-i18n="optionsColMarginRight">Right</div>
             </div>
           </div>
-          <div class="col">Orientation</div>
-          <div class="col">Copies</div>
-          <div class="col">Duplex</div>
+          <div class="col" data-i18n="optionsColOrientation">Orientation</div>
+          <div class="col" data-i18n="optionsColCopies">Copies</div>
+          <div class="col" data-i18n="optionsColDuplex">Duplex</div>
         </div>
 
         <div class="form-group">
@@ -43,6 +45,7 @@
                 class="col form-control printer-name"
                 type="text"
                 name="receipt_printer_label"
+                data-i18n="optionsPrinterReceipt"
                 value="Receipt Printer"
                 disabled
               />
@@ -51,6 +54,7 @@
                 type="number"
                 step="0.01"
                 placeholder="Width (In)"
+                data-i18n-placeholder="optionsWidthPlaceholder"
                 name="receipt_printer_width"
                 id="receipt_printer_width"
               />
@@ -59,11 +63,12 @@
                 type="number"
                 step="0.01"
                 placeholder="Height (In)"
+                data-i18n-placeholder="optionsHeightPlaceholder"
                 name="receipt_printer_height"
                 id="receipt_printer_height"
               />
               <select class="col form-control" name="receipt_printer" id="receipt_printer">
-                <option value="">Select</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
               </select>
               <div class="margin-wrap margin-col">
                 <input
@@ -71,6 +76,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="receipt_printer_margin_top"
                   id="receipt_printer_margin_top"
                 />
@@ -79,6 +85,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="receipt_printer_margin_bottom"
                   id="receipt_printer_margin_bottom"
                 />
@@ -87,6 +94,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="receipt_printer_margin_left"
                   id="receipt_printer_margin_left"
                 />
@@ -95,6 +103,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="receipt_printer_margin_right"
                   id="receipt_printer_margin_right"
                 />
@@ -104,10 +113,10 @@
                 name="receipt_printer_orientation"
                 id="receipt_printer_orientation"
               >
-                <option value="">Select</option>
-                <option value="Portrait">Portrait</option>
-                <option value="Landscape">Landscape</option>
-                <option value="Automatic">Automatic</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
+                <option value="Portrait" data-i18n="optionsOrientationPortrait">Portrait</option>
+                <option value="Landscape" data-i18n="optionsOrientationLandscape">Landscape</option>
+                <option value="Automatic" data-i18n="optionsOrientationAutomatic">Automatic</option>
               </select>
               <input
                 class="col form-control page-size"
@@ -115,6 +124,7 @@
                 min="1"
                 step="1"
                 placeholder="1"
+                data-i18n-placeholder="optionsCopiesPlaceholder"
                 name="receipt_printer_copies"
                 id="receipt_printer_copies"
               />
@@ -123,9 +133,9 @@
                 name="receipt_printer_duplex"
                 id="receipt_printer_duplex"
               >
-                <option value="">Off</option>
-                <option value="long">Long edge</option>
-                <option value="short">Short edge</option>
+                <option value="" data-i18n="optionsDuplexOff">Off</option>
+                <option value="long" data-i18n="optionsDuplexLong">Long edge</option>
+                <option value="short" data-i18n="optionsDuplexShort">Short edge</option>
               </select>
             </div>
           </div>
@@ -138,6 +148,7 @@
                 class="col form-control printer-name"
                 type="text"
                 name="sticker_printer_label"
+                data-i18n="optionsPrinterSticker"
                 value="Sticker Printer"
                 disabled
               />
@@ -146,6 +157,7 @@
                 type="number"
                 step="0.01"
                 placeholder="Width (In)"
+                data-i18n-placeholder="optionsWidthPlaceholder"
                 name="sticker_printer_width"
                 id="sticker_printer_width"
               />
@@ -154,11 +166,12 @@
                 type="number"
                 step="0.01"
                 placeholder="Height (In)"
+                data-i18n-placeholder="optionsHeightPlaceholder"
                 name="sticker_printer_height"
                 id="sticker_printer_height"
               />
               <select class="col form-control" name="sticker_printer" id="sticker_printer">
-                <option value="">Select</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
               </select>
               <div class="margin-wrap margin-col">
                 <input
@@ -166,6 +179,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="sticker_printer_margin_top"
                   id="sticker_printer_margin_top"
                 />
@@ -174,6 +188,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="sticker_printer_margin_bottom"
                   id="sticker_printer_margin_bottom"
                 />
@@ -182,6 +197,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="sticker_printer_margin_left"
                   id="sticker_printer_margin_left"
                 />
@@ -190,6 +206,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="sticker_printer_margin_right"
                   id="sticker_printer_margin_right"
                 />
@@ -199,10 +216,10 @@
                 name="sticker_printer_orientation"
                 id="sticker_printer_orientation"
               >
-                <option value="">Select</option>
-                <option value="Portrait">Portrait</option>
-                <option value="Landscape">Landscape</option>
-                <option value="Automatic">Automatic</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
+                <option value="Portrait" data-i18n="optionsOrientationPortrait">Portrait</option>
+                <option value="Landscape" data-i18n="optionsOrientationLandscape">Landscape</option>
+                <option value="Automatic" data-i18n="optionsOrientationAutomatic">Automatic</option>
               </select>
               <input
                 class="col form-control page-size"
@@ -210,6 +227,7 @@
                 min="1"
                 step="1"
                 placeholder="1"
+                data-i18n-placeholder="optionsCopiesPlaceholder"
                 name="sticker_printer_copies"
                 id="sticker_printer_copies"
               />
@@ -218,9 +236,9 @@
                 name="sticker_printer_duplex"
                 id="sticker_printer_duplex"
               >
-                <option value="">Off</option>
-                <option value="long">Long edge</option>
-                <option value="short">Short edge</option>
+                <option value="" data-i18n="optionsDuplexOff">Off</option>
+                <option value="long" data-i18n="optionsDuplexLong">Long edge</option>
+                <option value="short" data-i18n="optionsDuplexShort">Short edge</option>
               </select>
             </div>
           </div>
@@ -233,6 +251,7 @@
                 class="col form-control printer-name"
                 type="text"
                 name="paper_printer_label"
+                data-i18n="optionsPrinterPaper"
                 value="Paper Printer"
                 disabled
               />
@@ -241,6 +260,7 @@
                 type="number"
                 step="0.01"
                 placeholder="Width (In)"
+                data-i18n-placeholder="optionsWidthPlaceholder"
                 name="paper_printer_width"
                 id="paper_printer_width"
               />
@@ -249,11 +269,12 @@
                 type="number"
                 step="0.01"
                 placeholder="Height (In)"
+                data-i18n-placeholder="optionsHeightPlaceholder"
                 name="paper_printer_height"
                 id="paper_printer_height"
               />
               <select class="col form-control" name="paper_printer" id="paper_printer">
-                <option value="">Select</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
               </select>
               <div class="margin-wrap margin-col">
                 <input
@@ -261,6 +282,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="paper_printer_margin_top"
                   id="paper_printer_margin_top"
                 />
@@ -269,6 +291,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="paper_printer_margin_bottom"
                   id="paper_printer_margin_bottom"
                 />
@@ -277,6 +300,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="paper_printer_margin_left"
                   id="paper_printer_margin_left"
                 />
@@ -285,6 +309,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="paper_printer_margin_right"
                   id="paper_printer_margin_right"
                 />
@@ -294,10 +319,10 @@
                 name="paper_printer_orientation"
                 id="paper_printer_orientation"
               >
-                <option value="">Select</option>
-                <option value="Portrait">Portrait</option>
-                <option value="Landscape">Landscape</option>
-                <option value="Automatic">Automatic</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
+                <option value="Portrait" data-i18n="optionsOrientationPortrait">Portrait</option>
+                <option value="Landscape" data-i18n="optionsOrientationLandscape">Landscape</option>
+                <option value="Automatic" data-i18n="optionsOrientationAutomatic">Automatic</option>
               </select>
               <input
                 class="col form-control page-size"
@@ -305,6 +330,7 @@
                 min="1"
                 step="1"
                 placeholder="1"
+                data-i18n-placeholder="optionsCopiesPlaceholder"
                 name="paper_printer_copies"
                 id="paper_printer_copies"
               />
@@ -313,9 +339,9 @@
                 name="paper_printer_duplex"
                 id="paper_printer_duplex"
               >
-                <option value="">Off</option>
-                <option value="long">Long edge</option>
-                <option value="short">Short edge</option>
+                <option value="" data-i18n="optionsDuplexOff">Off</option>
+                <option value="long" data-i18n="optionsDuplexLong">Long edge</option>
+                <option value="short" data-i18n="optionsDuplexShort">Short edge</option>
               </select>
             </div>
           </div>
@@ -328,6 +354,7 @@
                 class="col form-control printer-name"
                 type="text"
                 name="full_sheet_printer_label"
+                data-i18n="optionsPrinterFullSheet"
                 value="Full Sheet Printer"
                 disabled
               />
@@ -336,6 +363,7 @@
                 type="number"
                 step="0.01"
                 placeholder="Width (In)"
+                data-i18n-placeholder="optionsWidthPlaceholder"
                 name="full_sheet_printer_width"
                 id="full_sheet_printer_width"
               />
@@ -344,11 +372,12 @@
                 type="number"
                 step="0.01"
                 placeholder="Height (In)"
+                data-i18n-placeholder="optionsHeightPlaceholder"
                 name="full_sheet_printer_height"
                 id="full_sheet_printer_height"
               />
               <select class="col form-control" name="full_sheet_printer" id="full_sheet_printer">
-                <option value="">Select</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
               </select>
               <div class="margin-wrap margin-col">
                 <input
@@ -356,6 +385,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="full_sheet_printer_margin_top"
                   id="full_sheet_printer_margin_top"
                 />
@@ -364,6 +394,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="full_sheet_printer_margin_bottom"
                   id="full_sheet_printer_margin_bottom"
                 />
@@ -372,6 +403,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="full_sheet_printer_margin_left"
                   id="full_sheet_printer_margin_left"
                 />
@@ -380,6 +412,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="full_sheet_printer_margin_right"
                   id="full_sheet_printer_margin_right"
                 />
@@ -389,10 +422,10 @@
                 name="full_sheet_printer_orientation"
                 id="full_sheet_printer_orientation"
               >
-                <option value="">Select</option>
-                <option value="Portrait">Portrait</option>
-                <option value="Landscape">Landscape</option>
-                <option value="Automatic">Automatic</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
+                <option value="Portrait" data-i18n="optionsOrientationPortrait">Portrait</option>
+                <option value="Landscape" data-i18n="optionsOrientationLandscape">Landscape</option>
+                <option value="Automatic" data-i18n="optionsOrientationAutomatic">Automatic</option>
               </select>
               <input
                 class="col form-control page-size"
@@ -400,6 +433,7 @@
                 min="1"
                 step="1"
                 placeholder="1"
+                data-i18n-placeholder="optionsCopiesPlaceholder"
                 name="full_sheet_printer_copies"
                 id="full_sheet_printer_copies"
               />
@@ -408,9 +442,9 @@
                 name="full_sheet_printer_duplex"
                 id="full_sheet_printer_duplex"
               >
-                <option value="">Off</option>
-                <option value="long">Long edge</option>
-                <option value="short">Short edge</option>
+                <option value="" data-i18n="optionsDuplexOff">Off</option>
+                <option value="long" data-i18n="optionsDuplexLong">Long edge</option>
+                <option value="short" data-i18n="optionsDuplexShort">Short edge</option>
               </select>
             </div>
           </div>
@@ -423,6 +457,7 @@
                 class="col form-control printer-name"
                 type="text"
                 name="label_printer_label"
+                data-i18n="optionsPrinterLabel"
                 value="Label Printer"
                 disabled
               />
@@ -431,6 +466,7 @@
                 type="number"
                 step="0.01"
                 placeholder="Width (In)"
+                data-i18n-placeholder="optionsWidthPlaceholder"
                 name="label_printer_width"
                 id="label_printer_width"
               />
@@ -439,11 +475,12 @@
                 type="number"
                 step="0.01"
                 placeholder="Height (In)"
+                data-i18n-placeholder="optionsHeightPlaceholder"
                 name="label_printer_height"
                 id="label_printer_height"
               />
               <select class="col form-control" name="label_printer" id="label_printer">
-                <option value="">Select</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
               </select>
               <div class="margin-wrap margin-col">
                 <input
@@ -451,6 +488,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="label_printer_margin_top"
                   id="label_printer_margin_top"
                 />
@@ -459,6 +497,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="label_printer_margin_bottom"
                   id="label_printer_margin_bottom"
                 />
@@ -467,6 +506,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="label_printer_margin_left"
                   id="label_printer_margin_left"
                 />
@@ -475,6 +515,7 @@
                   type="number"
                   step="0.01"
                   placeholder="(In)"
+                  data-i18n-placeholder="optionsMarginPlaceholder"
                   name="label_printer_margin_right"
                   id="label_printer_margin_right"
                 />
@@ -484,10 +525,10 @@
                 name="label_printer_orientation"
                 id="label_printer_orientation"
               >
-                <option value="">Select</option>
-                <option value="Portrait">Portrait</option>
-                <option value="Landscape">Landscape</option>
-                <option value="Automatic">Automatic</option>
+                <option value="" data-i18n="optionsSelect">Select</option>
+                <option value="Portrait" data-i18n="optionsOrientationPortrait">Portrait</option>
+                <option value="Landscape" data-i18n="optionsOrientationLandscape">Landscape</option>
+                <option value="Automatic" data-i18n="optionsOrientationAutomatic">Automatic</option>
               </select>
               <input
                 class="col form-control page-size"
@@ -495,6 +536,7 @@
                 min="1"
                 step="1"
                 placeholder="1"
+                data-i18n-placeholder="optionsCopiesPlaceholder"
                 name="label_printer_copies"
                 id="label_printer_copies"
               />
@@ -503,20 +545,25 @@
                 name="label_printer_duplex"
                 id="label_printer_duplex"
               >
-                <option value="">Off</option>
-                <option value="long">Long edge</option>
-                <option value="short">Short edge</option>
+                <option value="" data-i18n="optionsDuplexOff">Off</option>
+                <option value="long" data-i18n="optionsDuplexLong">Long edge</option>
+                <option value="short" data-i18n="optionsDuplexShort">Short edge</option>
               </select>
             </div>
           </div>
         </div>
 
         <div class="form-group justify-content-end save-btn-wrap">
-          <span id="save-msg" class="hide">Printer Mapping Saved Successfully</span>
-          <button type="submit" class="btn btn-primary" id="saveData">Save</button>
+          <span id="save-msg" class="hide" data-i18n="optionsSavedToast"
+            >Printer Mapping Saved Successfully</span
+          >
+          <button type="submit" class="btn btn-primary" id="saveData" data-i18n="optionsSave">
+            Save
+          </button>
         </div>
       </form>
     </div>
+    <script src="i18n.js"></script>
     <script src="options.js"></script>
   </body>
 </html>

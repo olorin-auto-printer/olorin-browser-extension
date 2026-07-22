@@ -68,6 +68,11 @@ const TOAST_MS = 3000;
 
 let toastTimer;
 
+// Missing keys resolve to "" in chrome.i18n, so the English fallback applies
+function i18nMessage(key, fallback) {
+  return (chrome.i18n && chrome.i18n.getMessage(key)) || fallback;
+}
+
 function sendWebSocketMessage(payload) {
   return new Promise((resolve, reject) => {
     chrome.runtime.sendMessage({ type: "websocket-send", payload }, (response) => {
@@ -108,7 +113,7 @@ async function loadPrinters({ preserveSelections = false } = {}) {
     select.replaceChildren();
     const placeholder = document.createElement("option");
     placeholder.value = "";
-    placeholder.textContent = "Select";
+    placeholder.textContent = i18nMessage("optionsSelect", "Select");
     select.append(placeholder);
 
     for (const printer of data.printer) {

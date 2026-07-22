@@ -7,29 +7,34 @@
   <body>
     <div class="card" id="connecting">
       <img src="images/bg3.svg" alt="" class="bg-img" />
-      <h1>Checking</h1>
-      <p>Companion App Connection ...</p>
-      <a href="#" class="option-btn">Settings</a>
+      <h1 data-i18n="popupCheckingTitle">Checking</h1>
+      <p data-i18n="popupCheckingText">Companion App Connection ...</p>
+      <a href="#" class="option-btn" data-i18n="popupSettings">Settings</a>
     </div>
     <div class="card" id="connected">
       <img src="images/bg1.svg" alt="" class="bg-img" />
-      <h1>Companion App Connected</h1>
-      <p>You can print now!</p>
+      <h1 data-i18n="popupConnectedTitle">Companion App Connected</h1>
+      <p data-i18n="popupConnectedText">You can print now!</p>
       <p class="version-line" id="companion_version"></p>
-      <a href="#" class="option-btn">Settings</a>
+      <a href="#" class="option-btn" data-i18n="popupSettings">Settings</a>
     </div>
     <div class="card" id="not_connected">
       <img src="images/bg2.svg" alt="" class="bg-img" />
-      <h1>Companion App Not Connected</h1>
-      <p>Please check if the Companion App is running.</p>
-      <a href="#" class="option-btn">Settings</a>
+      <h1 data-i18n="popupNotConnectedTitle">Companion App Not Connected</h1>
+      <p data-i18n="popupNotConnectedText">Please check if the Companion App is running.</p>
+      <a href="#" class="option-btn" data-i18n="popupSettings">Settings</a>
     </div>
     <div class="card" id="needs_permission">
       <img src="images/bg2.svg" alt="" class="bg-img" />
-      <h1>Page Access Needed</h1>
-      <p>Olorin needs access to your library pages to find print buttons.</p>
-      <a href="#" class="option-btn" id="grant_permission">Grant Access</a>
+      <h1 data-i18n="popupPermissionTitle">Page Access Needed</h1>
+      <p data-i18n="popupPermissionText">
+        Olorin needs access to your library pages to find print buttons.
+      </p>
+      <a href="#" class="option-btn" id="grant_permission" data-i18n="popupGrantAccess"
+        >Grant Access</a
+      >
     </div>
+    <script src="i18n.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>

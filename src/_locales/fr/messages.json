@@ -1,0 +1,140 @@
+{
+  "extDescription": {
+    "message": "Imprime silencieusement les tickets et étiquettes du SIGB Koha via l'application compagnon Olorin installée sur cet ordinateur."
+  },
+  "popupCheckingTitle": {
+    "message": "Vérification"
+  },
+  "popupCheckingText": {
+    "message": "Connexion à l'application compagnon ..."
+  },
+  "popupConnectedTitle": {
+    "message": "Application compagnon connectée"
+  },
+  "popupConnectedText": {
+    "message": "Vous pouvez imprimer !"
+  },
+  "popupVersionPrefix": {
+    "message": "v"
+  },
+  "popupNotConnectedTitle": {
+    "message": "Application compagnon non connectée"
+  },
+  "popupNotConnectedText": {
+    "message": "Vérifiez que l'application compagnon est bien lancée."
+  },
+  "popupPermissionTitle": {
+    "message": "Accès aux pages requis"
+  },
+  "popupPermissionText": {
+    "message": "Olorin a besoin d'accéder aux pages de votre bibliothèque pour trouver les boutons d'impression."
+  },
+  "popupGrantAccess": {
+    "message": "Autoriser l'accès"
+  },
+  "popupSettings": {
+    "message": "Paramètres"
+  },
+  "optionsTitle": {
+    "message": "Paramètres d'impression Olorin"
+  },
+  "optionsHeading": {
+    "message": "Paramètres des imprimantes"
+  },
+  "optionsRefreshPrinters": {
+    "message": "Actualiser les imprimantes"
+  },
+  "optionsErrorBanner": {
+    "message": "Application compagnon injoignable — vérifiez qu'elle est lancée, puis cliquez sur « Actualiser les imprimantes »."
+  },
+  "optionsColPrinter": {
+    "message": "Imprimante"
+  },
+  "optionsColPageWidth": {
+    "message": "Largeur de page"
+  },
+  "optionsColPageHeight": {
+    "message": "Hauteur de page"
+  },
+  "optionsColPrinterOption": {
+    "message": "Imprimante système"
+  },
+  "optionsColMargin": {
+    "message": "Marges"
+  },
+  "optionsColMarginTop": {
+    "message": "Haut"
+  },
+  "optionsColMarginBottom": {
+    "message": "Bas"
+  },
+  "optionsColMarginLeft": {
+    "message": "Gauche"
+  },
+  "optionsColMarginRight": {
+    "message": "Droite"
+  },
+  "optionsColOrientation": {
+    "message": "Orientation"
+  },
+  "optionsColCopies": {
+    "message": "Copies"
+  },
+  "optionsColDuplex": {
+    "message": "Recto verso"
+  },
+  "optionsPrinterReceipt": {
+    "message": "Imprimante de tickets"
+  },
+  "optionsPrinterSticker": {
+    "message": "Imprimante d'autocollants"
+  },
+  "optionsPrinterPaper": {
+    "message": "Imprimante papier"
+  },
+  "optionsPrinterFullSheet": {
+    "message": "Imprimante pleine page"
+  },
+  "optionsPrinterLabel": {
+    "message": "Imprimante d'étiquettes"
+  },
+  "optionsSelect": {
+    "message": "Choisir"
+  },
+  "optionsOrientationPortrait": {
+    "message": "Portrait"
+  },
+  "optionsOrientationLandscape": {
+    "message": "Paysage"
+  },
+  "optionsOrientationAutomatic": {
+    "message": "Automatique"
+  },
+  "optionsDuplexOff": {
+    "message": "Désactivé"
+  },
+  "optionsDuplexLong": {
+    "message": "Bord long"
+  },
+  "optionsDuplexShort": {
+    "message": "Bord court"
+  },
+  "optionsWidthPlaceholder": {
+    "message": "Largeur (po)"
+  },
+  "optionsHeightPlaceholder": {
+    "message": "Hauteur (po)"
+  },
+  "optionsMarginPlaceholder": {
+    "message": "(po)"
+  },
+  "optionsCopiesPlaceholder": {
+    "message": "1"
+  },
+  "optionsSave": {
+    "message": "Enregistrer"
+  },
+  "optionsSavedToast": {
+    "message": "Configuration des imprimantes enregistrée"
+  }
+}

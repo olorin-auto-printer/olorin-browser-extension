@@ -1,0 +1,140 @@
+{
+  "extDescription": {
+    "message": "Imprime silenciosamente los recibos y etiquetas del SIGB Koha a través de la aplicación complementaria Olorin instalada en este equipo."
+  },
+  "popupCheckingTitle": {
+    "message": "Comprobando"
+  },
+  "popupCheckingText": {
+    "message": "Conexión con la aplicación complementaria ..."
+  },
+  "popupConnectedTitle": {
+    "message": "Aplicación complementaria conectada"
+  },
+  "popupConnectedText": {
+    "message": "¡Ya puede imprimir!"
+  },
+  "popupVersionPrefix": {
+    "message": "v"
+  },
+  "popupNotConnectedTitle": {
+    "message": "Aplicación complementaria no conectada"
+  },
+  "popupNotConnectedText": {
+    "message": "Compruebe que la aplicación complementaria esté en ejecución."
+  },
+  "popupPermissionTitle": {
+    "message": "Se necesita acceso a las páginas"
+  },
+  "popupPermissionText": {
+    "message": "Olorin necesita acceder a las páginas de su biblioteca para encontrar los botones de impresión."
+  },
+  "popupGrantAccess": {
+    "message": "Conceder acceso"
+  },
+  "popupSettings": {
+    "message": "Configuración"
+  },
+  "optionsTitle": {
+    "message": "Configuración de impresoras de Olorin"
+  },
+  "optionsHeading": {
+    "message": "Configuración de impresoras"
+  },
+  "optionsRefreshPrinters": {
+    "message": "Actualizar impresoras"
+  },
+  "optionsErrorBanner": {
+    "message": "No se puede conectar con la aplicación complementaria — compruebe que esté en ejecución y pulse «Actualizar impresoras»."
+  },
+  "optionsColPrinter": {
+    "message": "Impresora"
+  },
+  "optionsColPageWidth": {
+    "message": "Ancho de página"
+  },
+  "optionsColPageHeight": {
+    "message": "Alto de página"
+  },
+  "optionsColPrinterOption": {
+    "message": "Impresora del sistema"
+  },
+  "optionsColMargin": {
+    "message": "Márgenes"
+  },
+  "optionsColMarginTop": {
+    "message": "Superior"
+  },
+  "optionsColMarginBottom": {
+    "message": "Inferior"
+  },
+  "optionsColMarginLeft": {
+    "message": "Izquierdo"
+  },
+  "optionsColMarginRight": {
+    "message": "Derecho"
+  },
+  "optionsColOrientation": {
+    "message": "Orientación"
+  },
+  "optionsColCopies": {
+    "message": "Copias"
+  },
+  "optionsColDuplex": {
+    "message": "Dúplex"
+  },
+  "optionsPrinterReceipt": {
+    "message": "Impresora de recibos"
+  },
+  "optionsPrinterSticker": {
+    "message": "Impresora de pegatinas"
+  },
+  "optionsPrinterPaper": {
+    "message": "Impresora de papel"
+  },
+  "optionsPrinterFullSheet": {
+    "message": "Impresora de página completa"
+  },
+  "optionsPrinterLabel": {
+    "message": "Impresora de etiquetas"
+  },
+  "optionsSelect": {
+    "message": "Seleccionar"
+  },
+  "optionsOrientationPortrait": {
+    "message": "Vertical"
+  },
+  "optionsOrientationLandscape": {
+    "message": "Horizontal"
+  },
+  "optionsOrientationAutomatic": {
+    "message": "Automática"
+  },
+  "optionsDuplexOff": {
+    "message": "Desactivado"
+  },
+  "optionsDuplexLong": {
+    "message": "Borde largo"
+  },
+  "optionsDuplexShort": {
+    "message": "Borde corto"
+  },
+  "optionsWidthPlaceholder": {
+    "message": "Ancho (pulg)"
+  },
+  "optionsHeightPlaceholder": {
+    "message": "Alto (pulg)"
+  },
+  "optionsMarginPlaceholder": {
+    "message": "(pulg)"
+  },
+  "optionsCopiesPlaceholder": {
+    "message": "1"
+  },
+  "optionsSave": {
+    "message": "Guardar"
+  },
+  "optionsSavedToast": {
+    "message": "Asignación de impresoras guardada correctamente"
+  }
+}

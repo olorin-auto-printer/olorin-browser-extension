@@ -1,0 +1,186 @@
+{
+  "extDescription": {
+    "message": "Prints Koha ILS receipts and labels silently through the Olorin Companion App running on this computer.",
+    "description": "Extension description shown in the browser's extension store and manager."
+  },
+  "popupCheckingTitle": {
+    "message": "Checking",
+    "description": "Popup card title while the connection check runs."
+  },
+  "popupCheckingText": {
+    "message": "Companion App Connection ...",
+    "description": "Popup card text while the connection check runs."
+  },
+  "popupConnectedTitle": {
+    "message": "Companion App Connected",
+    "description": "Popup card title when the companion app is reachable."
+  },
+  "popupConnectedText": {
+    "message": "You can print now!",
+    "description": "Popup card text when the companion app is reachable."
+  },
+  "popupVersionPrefix": {
+    "message": "v",
+    "description": "Prefix shown before the companion app version number, e.g. 'v2.1.0'."
+  },
+  "popupNotConnectedTitle": {
+    "message": "Companion App Not Connected",
+    "description": "Popup card title when the companion app is not reachable."
+  },
+  "popupNotConnectedText": {
+    "message": "Please check if the Companion App is running.",
+    "description": "Popup card text when the companion app is not reachable."
+  },
+  "popupPermissionTitle": {
+    "message": "Page Access Needed",
+    "description": "Popup card title when host permissions are missing (Firefox)."
+  },
+  "popupPermissionText": {
+    "message": "Olorin needs access to your library pages to find print buttons.",
+    "description": "Popup card text when host permissions are missing (Firefox)."
+  },
+  "popupGrantAccess": {
+    "message": "Grant Access",
+    "description": "Button that requests the missing host permissions."
+  },
+  "popupSettings": {
+    "message": "Settings",
+    "description": "Button that opens the options page."
+  },
+  "optionsTitle": {
+    "message": "Olorin Printer Settings",
+    "description": "Browser tab title of the options page."
+  },
+  "optionsHeading": {
+    "message": "Printer Settings",
+    "description": "Main heading of the options page."
+  },
+  "optionsRefreshPrinters": {
+    "message": "Refresh Printers",
+    "description": "Button that re-fetches the OS printer list from the companion app."
+  },
+  "optionsErrorBanner": {
+    "message": "Companion App not reachable — make sure it is running, then click Refresh Printers.",
+    "description": "Error banner shown when the companion app does not answer."
+  },
+  "optionsColPrinter": {
+    "message": "Printer",
+    "description": "Column header: logical printer name."
+  },
+  "optionsColPageWidth": {
+    "message": "Page Width",
+    "description": "Column header: page width in inches."
+  },
+  "optionsColPageHeight": {
+    "message": "Page Height",
+    "description": "Column header: page height in inches."
+  },
+  "optionsColPrinterOption": {
+    "message": "Printer Option",
+    "description": "Column header: the OS printer mapped to the logical printer."
+  },
+  "optionsColMargin": {
+    "message": "Margin",
+    "description": "Column header spanning the four margin fields."
+  },
+  "optionsColMarginTop": {
+    "message": "Top",
+    "description": "Margin sub-column header."
+  },
+  "optionsColMarginBottom": {
+    "message": "Bottom",
+    "description": "Margin sub-column header."
+  },
+  "optionsColMarginLeft": {
+    "message": "Left",
+    "description": "Margin sub-column header."
+  },
+  "optionsColMarginRight": {
+    "message": "Right",
+    "description": "Margin sub-column header."
+  },
+  "optionsColOrientation": {
+    "message": "Orientation",
+    "description": "Column header: page orientation."
+  },
+  "optionsColCopies": {
+    "message": "Copies",
+    "description": "Column header: number of copies to print."
+  },
+  "optionsColDuplex": {
+    "message": "Duplex",
+    "description": "Column header: double-sided printing mode."
+  },
+  "optionsPrinterReceipt": {
+    "message": "Receipt Printer",
+    "description": "Row label for the receipt_printer logical printer."
+  },
+  "optionsPrinterSticker": {
+    "message": "Sticker Printer",
+    "description": "Row label for the sticker_printer logical printer."
+  },
+  "optionsPrinterPaper": {
+    "message": "Paper Printer",
+    "description": "Row label for the paper_printer logical printer."
+  },
+  "optionsPrinterFullSheet": {
+    "message": "Full Sheet Printer",
+    "description": "Row label for the full_sheet_printer logical printer."
+  },
+  "optionsPrinterLabel": {
+    "message": "Label Printer",
+    "description": "Row label for the label_printer logical printer."
+  },
+  "optionsSelect": {
+    "message": "Select",
+    "description": "Placeholder option of the printer and orientation dropdowns."
+  },
+  "optionsOrientationPortrait": {
+    "message": "Portrait",
+    "description": "Orientation dropdown label (the stored value stays 'Portrait')."
+  },
+  "optionsOrientationLandscape": {
+    "message": "Landscape",
+    "description": "Orientation dropdown label (the stored value stays 'Landscape')."
+  },
+  "optionsOrientationAutomatic": {
+    "message": "Automatic",
+    "description": "Orientation dropdown label (the stored value stays 'Automatic')."
+  },
+  "optionsDuplexOff": {
+    "message": "Off",
+    "description": "Duplex dropdown label for single-sided printing (stored value is empty)."
+  },
+  "optionsDuplexLong": {
+    "message": "Long edge",
+    "description": "Duplex dropdown label (the stored value stays 'long')."
+  },
+  "optionsDuplexShort": {
+    "message": "Short edge",
+    "description": "Duplex dropdown label (the stored value stays 'short')."
+  },
+  "optionsWidthPlaceholder": {
+    "message": "Width (In)",
+    "description": "Placeholder of the page width inputs, in inches."
+  },
+  "optionsHeightPlaceholder": {
+    "message": "Height (In)",
+    "description": "Placeholder of the page height inputs, in inches."
+  },
+  "optionsMarginPlaceholder": {
+    "message": "(In)",
+    "description": "Placeholder of the margin inputs, in inches."
+  },
+  "optionsCopiesPlaceholder": {
+    "message": "1",
+    "description": "Placeholder of the copies inputs — blank means one copy."
+  },
+  "optionsSave": {
+    "message": "Save",
+    "description": "Button that saves the printer settings."
+  },
+  "optionsSavedToast": {
+    "message": "Printer Mapping Saved Successfully",
+    "description": "Toast shown after the settings were saved."
+  }
+}

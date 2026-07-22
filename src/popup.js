@@ -45,7 +45,8 @@ function fetchCompanionVersion() {
       if (!version) {
         return;
       }
-      document.getElementById("companion_version").textContent = "v" + version;
+      const prefix = (chrome.i18n && chrome.i18n.getMessage("popupVersionPrefix")) || "v";
+      document.getElementById("companion_version").textContent = prefix + version;
     },
   );
 }
