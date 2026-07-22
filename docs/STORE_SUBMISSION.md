@@ -10,8 +10,8 @@ addons.mozilla.org (AMO). Build the packages first: `npm run check` then use
 - **Chrome Web Store**: a developer account ($5 one-time fee) at
   https://chrome.google.com/webstore/devconsole
 - **AMO**: a Firefox account at https://addons.mozilla.org/developers/
-- **Privacy policy URL**: host `PRIVACY.md` somewhere public (GitHub Pages
-  or a bywatersolutions.com page) — both stores ask for the URL.
+- **Privacy policy URL** (GitHub Pages, already enabled on this repo):
+  https://olorin-auto-printer.github.io/olorin-browser-extension/PRIVACY.html
 - The Firefox add-on ID is pinned to `olorin@bywatersolutions.com` in the
   manifest. It must never change once the first version is published.
 
