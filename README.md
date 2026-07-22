@@ -40,9 +40,9 @@ Nothing ever leaves the computer.
    ```
 
 4. The extension's options page maps each logical printer to a real OS
-   printer, with per-printer page size, margins, and orientation. Settings
-   are stored by the companion app, so they are shared by every browser on
-   the machine.
+   printer, with per-printer page size, margins, orientation, number of
+   copies, and duplex (long edge / short edge) mode. Settings are stored by
+   the companion app, so they are shared by every browser on the machine.
 
 Pages can react to print outcomes by listening for a DOM event:
 
@@ -50,6 +50,34 @@ Pages can react to print outcomes by listening for a DOM event:
 document.addEventListener("olorin:print-result", (e) => console.log(e.detail));
 // e.detail = { success: true } or { success: false, error: "..." }
 ```
+
+### Opening a cash drawer
+
+A button with `data-action="cash-drawer"` kicks open the till drawer
+attached to the printer named by `data-printer` instead of printing (no
+`data-print` is needed):
+
+```html
+<button class="olorinPlugin" data-action="cash-drawer" data-printer="receipt_printer">
+  Open Drawer
+</button>
+```
+
+The outcome is reported as an `olorin:drawer-result` DOM event with the
+same `{ success, error }` detail shape as `olorin:print-result`.
+
+## Koha configuration
+
+[docs/KOHA_COOKBOOK.md](docs/KOHA_COOKBOOK.md) has ready-to-paste notice
+templates for a checkout quick slip and a hold slip, the
+`IntranetSlipPrinterJS` auto-print snippet, a cash drawer button, and an
+`IntranetUserJS` snippet that alerts staff when a print fails.
+
+## Deploying to many machines
+
+[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) covers force-installing the
+extension on managed workstations: Chrome's `ExtensionInstallForcelist`
+policy and Firefox's `policies.json` `ExtensionSettings`.
 
 ## Installation
 
