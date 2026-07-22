@@ -19,7 +19,7 @@ addons.mozilla.org (AMO). Build the packages first: `npm run check` then use
 
 - **Name**: Olorin
 - **Summary** (≤132 chars CWS / ≤250 AMO): Silent receipt and label
-  printing for the Koha library system via the Olorin Companion App.
+  printing for web apps like the Koha ILS, via the Olorin Companion App.
 - **Category**: Productivity (CWS) / Other or “Web Development” alternatives on AMO
 - **Description**: reuse the "How it works" section of README.md, plus a
   link to the companion app releases page.
@@ -32,13 +32,15 @@ addons.mozilla.org (AMO). Build the packages first: `npm run check` then use
 
 **Broad host access / content script on `<all_urls>`:**
 
-> Olorin adds silent receipt/label printing to the Koha integrated library
-> system's staff interface. Each library hosts Koha on its own domain
-> (self-hosted or vendor-hosted), so there is no finite list of URLs; the
-> content script must be available on any page to detect the print buttons
-> Koha embeds (`#webPrint` / `.olorinPlugin`). The script is passive: it
-> only reacts when a user (or Koha's slip-printer setting) activates one of
-> those buttons, then sends that slip's HTML to the Olorin Companion App
+> Olorin adds silent receipt/label printing to web applications —
+> primarily the staff interface of the Koha integrated library system,
+> though any site can embed its print markup. Each library hosts Koha on
+> its own domain (self-hosted or vendor-hosted), so there is no finite
+> list of URLs; the content script must be available on any page to detect
+> the print buttons the page embeds (`#webPrint` / `.olorinPlugin`). The
+> script is passive: it only reacts when a user (or the page's own
+> automation, such as Koha's slip-printer setting) activates one of those
+> buttons, then sends that slip's HTML to the Olorin Companion App
 > listening on localhost:9696 on the same computer, which prints it. No page
 > content is read, stored, or transmitted anywhere else. No remote code is
 > loaded or executed.
@@ -52,8 +54,9 @@ addons.mozilla.org (AMO). Build the packages first: `npm run check` then use
 
 **Reviewer notes (AMO):**
 
-> This extension is a companion to the Koha ILS (open source library
-> system, https://koha-community.org). The build is unminified and built
+> This extension was developed as a companion to the Koha ILS (open
+> source library system, https://koha-community.org) but works with any
+> web application that embeds its print markup. The build is unminified and built
 > from this public repository with `npm run build`; there is no bundler or
 > transpiler — the files in the package are the files in `src/` plus a
 > generated manifest.json. Data collection is declared as "none"
@@ -64,14 +67,15 @@ addons.mozilla.org (AMO). Build the packages first: `npm run check` then use
 ## Data disclosures
 
 - **CWS data-usage form**: does not collect or use user data — check the
-  "no data collected" attestations. Single purpose: printing Koha library
-  slips via a local companion app.
+  "no data collected" attestations. Single purpose: silent printing of
+  page-embedded slips/labels via a local companion app.
 - **AMO**: data collection declared in the manifest as `none`.
 
 ## Known review risks and answers
 
-- _"Why `<all_urls>` instead of specific sites?"_ — Koha is self-hosted;
-  every library has a different domain. There is no enumerable list.
+- _"Why `<all_urls>` instead of specific sites?"_ — Koha (the primary
+  user) is self-hosted, so every library has a different domain, and the
+  markup works on any web application. There is no enumerable list.
   (Firefox users can also decline/revoke host access; the popup detects
   this and offers a grant button.)
 - _"Why not Native Messaging?"_ — The companion app serves Chrome, Firefox,

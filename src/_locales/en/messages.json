@@ -1,6 +1,6 @@
 {
   "extDescription": {
-    "message": "Prints Koha ILS receipts and labels silently through the Olorin Companion App running on this computer.",
+    "message": "Silent receipt and label printing for web applications such as the Koha ILS, through the Olorin Companion App running on this computer.",
     "description": "Extension description shown in the browser's extension store and manager."
   },
   "popupCheckingTitle": {

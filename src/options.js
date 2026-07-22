@@ -1,5 +1,6 @@
-// Options page: maps the five logical printers Koha slips reference to real
-// OS printers, with per-printer page size, margins, and orientation. All
+// Options page: maps the five logical printers that page print buttons
+// reference (Koha slips, for example) to real OS printers, with per-printer
+// page size, margins, and orientation. All
 // settings are stored by the Companion App (set-options / get-options over
 // its WebSocket), so they are shared by every browser on the machine.
 

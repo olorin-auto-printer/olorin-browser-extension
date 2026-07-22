@@ -1,18 +1,22 @@
 # Olorin Browser Extension
 
-Silent receipt and label printing for the [Koha ILS](https://koha-community.org/),
-for both **Chrome** and **Firefox**, built from a single shared source tree.
+Silent receipt and label printing for web applications, for both **Chrome**
+and **Firefox**, built from a single shared source tree. Olorin was developed
+for the [Koha ILS](https://koha-community.org/) and works with Koha out of
+the box, but it is not tied to Koha — any web page that embeds its print
+markup can use it.
 
 The extension works together with the
 [Olorin Companion App](https://github.com/olorin-auto-printer/olorin-companion-app),
 a small desktop app that does the actual printing. The extension finds print
-buttons that Koha embeds in slips and notices, grabs the slip's HTML, and
+buttons embedded in the page, grabs the designated element's HTML, and
 sends it to the companion app over a local WebSocket (`ws://localhost:9696`).
 Nothing ever leaves the computer.
 
 ## How it works
 
-1. Koha notice/slip templates embed a print button:
+1. The web application embeds a print button — in Koha, notice/slip
+   templates carry it:
 
    ```html
    <button id="webPrint" data-printer="receipt_printer" data-print="#receipt">Print</button>
@@ -30,14 +34,18 @@ Nothing ever leaves the computer.
    <span id="receipt"> ... slip content ... </span>
    ```
 
-3. To print automatically when the slip page loads, set the Koha system
-   preference `IntranetSlipPrinterJS` to:
+3. To print automatically when the page loads, trigger a click on the
+   button from the page's own JavaScript. In Koha that means setting the
+   `IntranetSlipPrinterJS` system preference to:
 
    ```javascript
    setTimeout(function () {
      $("#webPrint").trigger("click");
    }, 1000);
    ```
+
+   (Any page script that dispatches a real click works — jQuery is not
+   required.)
 
 4. The extension's options page maps each logical printer to a real OS
    printer, with per-printer page size, margins, orientation, number of
@@ -65,6 +73,23 @@ attached to the printer named by `data-printer` instead of printing (no
 
 The outcome is reported as an `olorin:drawer-result` DOM event with the
 same `{ success, error }` detail shape as `olorin:print-result`.
+
+## Use with other web applications
+
+Nothing in Olorin depends on Koha. The integration contract for any web
+application is:
+
+- Embed an element with id `webPrint` or class `olorinPlugin` carrying
+  `data-printer` (one of the five logical printer keys) and `data-print`
+  (a CSS selector for the element to print) — or
+  `data-action="cash-drawer"` plus `data-printer` to open a till drawer.
+- A user click (or a programmatic click dispatched by the page) triggers
+  the action; the selected element's `innerHTML` is printed silently.
+- Listen for the `olorin:print-result` / `olorin:drawer-result` DOM events
+  to react to outcomes.
+- Printer mappings, page sizes, margins, copies, and duplex are configured
+  once per workstation in the extension's Settings page or the companion
+  app's window — the page never needs to know about physical printers.
 
 ## Koha configuration
 

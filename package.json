@@ -1,7 +1,7 @@
 {
   "name": "olorin-browser-extension",
   "version": "2.0.0",
-  "description": "Olorin printing extension for Chrome and Firefox — silent receipt/label printing for the Koha ILS via the Olorin Companion App",
+  "description": "Olorin printing extension for Chrome and Firefox — silent receipt/label printing for web apps like the Koha ILS via the Olorin Companion App",
   "private": true,
   "license": "GPL-3.0-only",
   "author": "Kyle M Hall",

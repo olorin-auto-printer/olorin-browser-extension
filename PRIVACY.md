@@ -4,18 +4,20 @@ _Last updated: July 2026_
 
 ## What Olorin does
 
-Olorin is a browser extension for libraries using the Koha integrated
-library system. It bridges the browser and the Olorin Companion App — a
-program installed on the same computer — so that receipts, slips, and labels
-can print silently to the correct printer.
+Olorin is a browser extension that bridges the browser and the Olorin
+Companion App — a program installed on the same computer — so that receipts,
+slips, and labels can print silently to the correct printer. It was
+developed for libraries using the Koha integrated library system, but works
+with any web application that embeds its print buttons.
 
 ## What data is handled
 
-When a print button embedded in a Koha page is activated (by a staff member
-or by Koha's own slip-printing automation), the extension reads the HTML of
-the specific slip element that button designates and sends it to the Olorin
-Companion App over a local WebSocket connection (`localhost:9696`). The
-companion app renders and prints it, then discards it.
+When a print button embedded in a web page (typically a Koha slip) is
+activated — by a staff member or by the page's own print automation — the
+extension reads the HTML of the specific element that button designates and
+sends it to the Olorin Companion App over a local WebSocket connection
+(`localhost:9696`). The companion app renders and prints it, then discards
+it.
 
 That is the only page data the extension touches. It is processed
 transiently, on the user's own computer, solely to print.

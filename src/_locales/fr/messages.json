@@ -1,6 +1,6 @@
 {
   "extDescription": {
-    "message": "Imprime silencieusement les tickets et étiquettes du SIGB Koha via l'application compagnon Olorin installée sur cet ordinateur."
+    "message": "Impression silencieuse de tickets et d'étiquettes pour les applications web telles que le SIGB Koha, via l'application compagnon Olorin installée sur cet ordinateur."
   },
   "popupCheckingTitle": {
     "message": "Vérification"

@@ -1,6 +1,6 @@
 {
   "extDescription": {
-    "message": "Imprime silenciosamente los recibos y etiquetas del SIGB Koha a través de la aplicación complementaria Olorin instalada en este equipo."
+    "message": "Impresión silenciosa de recibos y etiquetas para aplicaciones web como el SIGB Koha, a través de la aplicación complementaria Olorin instalada en este equipo."
   },
   "popupCheckingTitle": {
     "message": "Comprobando"

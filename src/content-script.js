@@ -1,4 +1,4 @@
-// Koha embeds print buttons in slips:
+// Web applications embed print buttons (Koha slips do this out of the box):
 //   <button id="webPrint" data-printer="receipt_printer" data-print="#receipt">Print</button>
 // (or any element with the 'olorinPlugin' class). On click, the HTML of the
 // element selected by 'data-print' is sent to the Companion App, which
