@@ -43,7 +43,7 @@ computer for printing. It never leaves the machine.
 
 ## Contact
 
-Questions about this policy: support@bywatersolutions.com
+Questions about this policy: olorin@kylehall.info
 
 Changes to this policy will be published in this repository and noted in
 release notes.
