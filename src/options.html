@@ -16,7 +16,7 @@
       </div>
       <form id="printer" method="post">
         <div class="label-group">
-          <div class="col">Printer</div>
+          <div class="col printer-col">Printer</div>
           <div class="col">Page Width</div>
           <div class="col">Page Height</div>
           <div class="col">Printer Option</div>
@@ -32,6 +32,8 @@
             </div>
           </div>
           <div class="col">Orientation</div>
+          <div class="col">Copies</div>
+          <div class="col">Duplex</div>
         </div>
 
         <div class="form-group">
@@ -106,6 +108,24 @@
                 <option value="Portrait">Portrait</option>
                 <option value="Landscape">Landscape</option>
                 <option value="Automatic">Automatic</option>
+              </select>
+              <input
+                class="col form-control page-size"
+                type="number"
+                min="1"
+                step="1"
+                placeholder="1"
+                name="receipt_printer_copies"
+                id="receipt_printer_copies"
+              />
+              <select
+                class="col form-control"
+                name="receipt_printer_duplex"
+                id="receipt_printer_duplex"
+              >
+                <option value="">Off</option>
+                <option value="long">Long edge</option>
+                <option value="short">Short edge</option>
               </select>
             </div>
           </div>
@@ -184,6 +204,24 @@
                 <option value="Landscape">Landscape</option>
                 <option value="Automatic">Automatic</option>
               </select>
+              <input
+                class="col form-control page-size"
+                type="number"
+                min="1"
+                step="1"
+                placeholder="1"
+                name="sticker_printer_copies"
+                id="sticker_printer_copies"
+              />
+              <select
+                class="col form-control"
+                name="sticker_printer_duplex"
+                id="sticker_printer_duplex"
+              >
+                <option value="">Off</option>
+                <option value="long">Long edge</option>
+                <option value="short">Short edge</option>
+              </select>
             </div>
           </div>
         </div>
@@ -260,6 +298,24 @@
                 <option value="Portrait">Portrait</option>
                 <option value="Landscape">Landscape</option>
                 <option value="Automatic">Automatic</option>
+              </select>
+              <input
+                class="col form-control page-size"
+                type="number"
+                min="1"
+                step="1"
+                placeholder="1"
+                name="paper_printer_copies"
+                id="paper_printer_copies"
+              />
+              <select
+                class="col form-control"
+                name="paper_printer_duplex"
+                id="paper_printer_duplex"
+              >
+                <option value="">Off</option>
+                <option value="long">Long edge</option>
+                <option value="short">Short edge</option>
               </select>
             </div>
           </div>
@@ -338,6 +394,24 @@
                 <option value="Landscape">Landscape</option>
                 <option value="Automatic">Automatic</option>
               </select>
+              <input
+                class="col form-control page-size"
+                type="number"
+                min="1"
+                step="1"
+                placeholder="1"
+                name="full_sheet_printer_copies"
+                id="full_sheet_printer_copies"
+              />
+              <select
+                class="col form-control"
+                name="full_sheet_printer_duplex"
+                id="full_sheet_printer_duplex"
+              >
+                <option value="">Off</option>
+                <option value="long">Long edge</option>
+                <option value="short">Short edge</option>
+              </select>
             </div>
           </div>
         </div>
@@ -414,6 +488,24 @@
                 <option value="Portrait">Portrait</option>
                 <option value="Landscape">Landscape</option>
                 <option value="Automatic">Automatic</option>
+              </select>
+              <input
+                class="col form-control page-size"
+                type="number"
+                min="1"
+                step="1"
+                placeholder="1"
+                name="label_printer_copies"
+                id="label_printer_copies"
+              />
+              <select
+                class="col form-control"
+                name="label_printer_duplex"
+                id="label_printer_duplex"
+              >
+                <option value="">Off</option>
+                <option value="long">Long edge</option>
+                <option value="short">Short edge</option>
               </select>
             </div>
           </div>

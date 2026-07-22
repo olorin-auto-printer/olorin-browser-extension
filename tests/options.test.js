@@ -48,7 +48,7 @@ describe("options page", () => {
     vi.useRealTimers();
   });
 
-  it("has 40 unique field names (8 settings for each of the 5 printers)", async () => {
+  it("has 50 unique field names (10 settings for each of the 5 printers)", async () => {
     mockCompanion();
     await loadOptionsPage();
 
@@ -60,7 +60,7 @@ describe("options page", () => {
         fieldNames.add(field.name);
       }
     }
-    expect(fieldNames.size).toBe(40);
+    expect(fieldNames.size).toBe(50);
   });
 
   it("populates the five printer selects from list-printer", async () => {
@@ -84,29 +84,37 @@ describe("options page", () => {
       options: {
         receipt_printer: "EPSON_TM_T88V",
         receipt_printer_width: "3.125",
+        receipt_printer_copies: "2",
+        receipt_printer_duplex: "long",
       },
     });
     await loadOptionsPage();
 
     expect(document.getElementById("receipt_printer").value).toBe("EPSON_TM_T88V");
     expect(document.getElementById("receipt_printer_width").value).toBe("3.125");
+    expect(document.getElementById("receipt_printer_copies").value).toBe("2");
+    expect(document.getElementById("receipt_printer_duplex").value).toBe("long");
     // Unsaved fields stay empty rather than becoming the string "undefined"
     expect(document.getElementById("sticker_printer_width").value).toBe("");
   });
 
-  it("saves all 40 fields on submit and shows a toast for 3 seconds", async () => {
+  it("saves all 50 fields on submit and shows a toast for 3 seconds", async () => {
     mockCompanion();
     await loadOptionsPage();
 
     document.getElementById("receipt_printer").value = "EPSON_TM_T88V";
     document.getElementById("receipt_printer_width").value = "3.125";
+    document.getElementById("receipt_printer_copies").value = "2";
+    document.getElementById("receipt_printer_duplex").value = "short";
 
     document.getElementById("printer").dispatchEvent(new Event("submit", { cancelable: true }));
     await vi.advanceTimersByTimeAsync(0);
 
-    expect(Object.keys(savedOptions)).toHaveLength(40);
+    expect(Object.keys(savedOptions)).toHaveLength(50);
     expect(savedOptions.receipt_printer).toBe("EPSON_TM_T88V");
     expect(savedOptions.receipt_printer_width).toBe("3.125");
+    expect(savedOptions.receipt_printer_copies).toBe("2");
+    expect(savedOptions.receipt_printer_duplex).toBe("short");
 
     const toast = document.getElementById("save-msg");
     expect(toast.classList.contains("hide")).toBe(false);
