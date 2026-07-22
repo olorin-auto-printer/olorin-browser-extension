@@ -1,0 +1,29 @@
+{
+  "name": "olorin-browser-extension",
+  "version": "2.0.0",
+  "description": "Olorin printing extension for Chrome and Firefox — silent receipt/label printing for the Koha ILS via the Olorin Companion App",
+  "private": true,
+  "license": "GPL-3.0-only",
+  "author": "ByWater Solutions",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "lint": "eslint src tests scripts && prettier --check .",
+    "format": "prettier --write .",
+    "lint:firefox": "npm run build && addons-linter dist/firefox",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "start:firefox": "npm run build && web-ext run --source-dir dist/firefox",
+    "check": "npm run lint && npm test && npm run lint:firefox"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "addons-linter": "^10.9.0",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.7.0",
+    "jsdom": "^28.0.0",
+    "prettier": "^3.9.6",
+    "vitest": "^4.1.10",
+    "web-ext": "^10.5.0"
+  }
+}
