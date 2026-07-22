@@ -27,7 +27,27 @@ function checkConnection() {
       return;
     }
     showCard("connected");
+    fetchCompanionVersion();
   });
+}
+
+// Ask the companion app for its version via the 'hello' command. Old
+// companion apps send no response to unknown commands, so the proxy times
+// out — in that case the connected card just stays as-is.
+function fetchCompanionVersion() {
+  chrome.runtime.sendMessage(
+    { type: "websocket-send", payload: { id: "hello", text: "hello" } },
+    (response) => {
+      if (chrome.runtime.lastError || !response || !response.success) {
+        return;
+      }
+      const version = response.data && response.data.version;
+      if (!version) {
+        return;
+      }
+      document.getElementById("companion_version").textContent = "v" + version;
+    },
+  );
 }
 
 async function init() {

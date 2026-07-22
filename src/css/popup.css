@@ -32,6 +32,11 @@ p {
 .bg-img {
   max-width: 100%;
 }
+.version-line {
+  color: #8a959e;
+  font-size: 12px;
+  margin-top: 6px;
+}
 .option-btn {
   max-width: 150px;
   width: auto;
