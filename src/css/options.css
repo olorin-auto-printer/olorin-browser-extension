@@ -1,0 +1,195 @@
+/* Base form styling (replaces the previously bundled Bootstrap) */
+
+* {
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #212224;
+  font-family: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+.container {
+  max-width: 900px;
+  width: 95vw;
+  background: #fff;
+  padding: 15px 10px;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0;
+}
+.form-control:focus {
+  outline: none;
+  border-color: #ccc;
+  box-shadow: none;
+}
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 11px;
+  padding: 8px 20px;
+  outline: none;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+}
+.btn-primary:hover {
+  background-color: #286090;
+}
+.hide {
+  display: none !important;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Page layout */
+
+.top-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.top-head h1 {
+  color: #555;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+}
+.error-banner {
+  background: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+#printer input[type="text"] {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-weight: 600;
+}
+#printer select {
+  box-shadow: none;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+.justify-content-end {
+  display: flex;
+  justify-content: flex-end;
+}
+button#saveData {
+  margin-top: 15px;
+}
+.save-btn-wrap {
+  border-top: 1px solid #ccc;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+.input-row {
+  width: 100%;
+  max-width: 100%;
+}
+.label-group {
+  font-weight: 600;
+  padding: 0;
+}
+.label-group,
+.frm-input-wrap {
+  display: flex;
+  width: 100%;
+  background-color: #eee;
+  align-items: center;
+}
+.frm-input-wrap {
+  background-color: transparent;
+  padding: 5px 0;
+  text-transform: capitalize;
+}
+.mwt {
+  background-color: #ccc;
+  padding: 3px 0;
+}
+.mwb {
+  background-color: #ddd;
+  padding: 3px 0;
+}
+.label-group .col,
+.frm-input-wrap .col {
+  width: 14%;
+  text-align: center;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+.margin-col {
+  width: 30% !important;
+}
+.margin-wrap {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.margin-wrap .col {
+  width: 25%;
+  padding: 0;
+}
+.full-width {
+  width: 100% !important;
+}
+select.form-control,
+select.form-control option {
+  border-radius: 0 !important;
+  padding: 3px 0;
+}
+.printer-name {
+  font-size: 13px !important;
+  text-transform: capitalize !important;
+}
+.frm-input-wrap input.col {
+  font-size: 14px !important;
+  text-transform: capitalize;
+}
+#save-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding-right: 30px;
+  margin-top: 15px;
+  color: #2e7d32;
+  font-weight: 600;
+}
+button#refresh {
+  float: right;
+}
+
+@media (max-width: 767px) {
+  .container,
+  #printer input[type="text"] {
+    width: 100%;
+  }
+  #printer input[type="text"] {
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/popup.css" />
+  </head>
+  <body>
+    <div class="card" id="connecting">
+      <img src="images/bg3.svg" alt="" class="bg-img" />
+      <h1>Checking</h1>
+      <p>Companion App Connection ...</p>
+      <a href="#" class="option-btn">Settings</a>
+    </div>
+    <div class="card" id="connected">
+      <img src="images/bg1.svg" alt="" class="bg-img" />
+      <h1>Companion App Connected</h1>
+      <p>You can print now!</p>
+      <a href="#" class="option-btn">Settings</a>
+    </div>
+    <div class="card" id="not_connected">
+      <img src="images/bg2.svg" alt="" class="bg-img" />
+      <h1>Companion App Not Connected</h1>
+      <p>Please check if the Companion App is running.</p>
+      <a href="#" class="option-btn">Settings</a>
+    </div>
+    <div class="card" id="needs_permission">
+      <img src="images/bg2.svg" alt="" class="bg-img" />
+      <h1>Page Access Needed</h1>
+      <p>Olorin needs access to your library pages to find print buttons.</p>
+      <a href="#" class="option-btn" id="grant_permission">Grant Access</a>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

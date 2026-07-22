@@ -1,0 +1,47 @@
+html {
+  max-height: 450px;
+}
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background: #ebf0f5;
+  max-height: 450px;
+}
+h1 {
+  color: #000;
+  font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+p {
+  color: #333;
+  font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  margin: 0;
+}
+.card {
+  background: white;
+  padding: 0;
+  display: none;
+  margin: 0 auto;
+  width: 325px;
+}
+.bg-img {
+  max-width: 100%;
+}
+.option-btn {
+  max-width: 150px;
+  width: auto;
+  margin: 50px auto;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #000;
+  display: block;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
