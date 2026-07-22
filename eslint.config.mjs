@@ -23,7 +23,7 @@ export default [
     },
   },
   {
-    files: ["tests/**/*.js", "tests/**/*.mjs", "scripts/**/*.mjs"],
+    files: ["tests/**/*.js", "tests/**/*.mjs", "scripts/**/*.mjs", "e2e/**/*.mjs", "*.mjs"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",

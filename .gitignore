@@ -1,5 +1,7 @@
 node_modules/
 dist/
 web-ext-artifacts/
+test-results/
+playwright-report/
 .DS_Store
 .claude/settings.local.json

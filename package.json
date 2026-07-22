@@ -7,16 +7,18 @@
   "author": "Kyle M Hall",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "lint": "eslint src tests scripts && prettier --check .",
+    "lint": "eslint src tests scripts e2e && prettier --check .",
     "format": "prettier --write .",
     "lint:firefox": "npm run build && addons-linter dist/firefox",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "npm run build && playwright test",
     "start:firefox": "npm run build && web-ext run --source-dir dist/firefox",
     "check": "npm run lint && npm test && npm run lint:firefox"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.61.1",
     "addons-linter": "^10.9.0",
     "eslint": "^10.7.0",
     "eslint-config-prettier": "^10.1.8",
@@ -24,6 +26,7 @@
     "jsdom": "^28.0.0",
     "prettier": "^3.9.6",
     "vitest": "^4.1.10",
-    "web-ext": "^10.5.0"
+    "web-ext": "^10.5.0",
+    "ws": "^8.21.1"
   }
 }
