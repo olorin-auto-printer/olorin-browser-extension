@@ -4,7 +4,7 @@
   "description": "Olorin printing extension for Chrome and Firefox — silent receipt/label printing for the Koha ILS via the Olorin Companion App",
   "private": true,
   "license": "GPL-3.0-only",
-  "author": "ByWater Solutions",
+  "author": "Kyle M Hall",
   "scripts": {
     "build": "node scripts/build.mjs",
     "lint": "eslint src tests scripts && prettier --check .",

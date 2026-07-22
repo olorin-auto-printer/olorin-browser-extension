@@ -12,7 +12,7 @@ addons.mozilla.org (AMO). Build the packages first: `npm run check` then use
 - **AMO**: a Firefox account at https://addons.mozilla.org/developers/
 - **Privacy policy URL** (GitHub Pages, already enabled on this repo):
   https://olorin-auto-printer.github.io/olorin-browser-extension/PRIVACY.html
-- The Firefox add-on ID is pinned to `olorin@bywatersolutions.com` in the
+- The Firefox add-on ID is pinned to `olorin@kylehall.info` in the
   manifest. It must never change once the first version is published.
 
 ## Listing copy (both stores)
