@@ -86,6 +86,7 @@ export const chromeMock = {
     openOptionsPage: vi.fn(),
     lastError: undefined,
     getURL: (p) => `chrome-extension://test-id/${p}`,
+    getManifest: () => ({ version: "1.2.3" }),
   },
   permissions: {
     contains: vi.fn((query, callback) => callback(true)),

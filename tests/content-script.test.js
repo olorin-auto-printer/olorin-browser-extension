@@ -249,4 +249,243 @@ describe("content script", () => {
     });
     expect(chromeMock.runtime.sendMessage).not.toHaveBeenCalled();
   });
+
+  describe("inbound event API", () => {
+    function dispatchApiEvent(eventName, detail) {
+      document.dispatchEvent(new CustomEvent(eventName, { detail }));
+    }
+
+    it("answers olorin:ping with olorin:pong echoing the id and the extension version", async () => {
+      const pong = lastResultEvent("olorin:pong");
+
+      dispatchApiEvent("olorin:ping", { id: "ping-7" });
+
+      await expect(pong).resolves.toEqual({ id: "ping-7", version: "1.2.3" });
+    });
+
+    it("answers an id-less olorin:ping without inventing an id", () => {
+      const pongs = [];
+      document.addEventListener("olorin:pong", (event) => pongs.push(event.detail));
+
+      document.dispatchEvent(new CustomEvent("olorin:ping"));
+
+      expect(pongs).toEqual([{ version: "1.2.3" }]);
+      expect("id" in pongs[0]).toBe(false);
+    });
+
+    it("reports the companion's hello response for olorin:status", async () => {
+      chromeMock.runtime.sendMessage.mockImplementation((message, callback) =>
+        callback({ success: true, data: { id: "hello", version: "2.0.4", protocol: 1 } }),
+      );
+      const result = lastResultEvent("olorin:status-result");
+
+      dispatchApiEvent("olorin:status", { id: "status-1" });
+
+      expect(chromeMock.runtime.sendMessage).toHaveBeenCalledWith(
+        { type: "websocket-send", payload: { id: "hello", text: "hello" } },
+        expect.any(Function),
+      );
+      await expect(result).resolves.toEqual({
+        id: "status-1",
+        success: true,
+        error: undefined,
+        data: { id: "hello", version: "2.0.4", protocol: 1 },
+      });
+    });
+
+    it("passes the proxy timeout through as a failed olorin:status-result", async () => {
+      // Companion apps before 2.0 never answer hello — the proxy times out
+      chromeMock.runtime.sendMessage.mockImplementation((message, callback) =>
+        callback({ success: false, error: "Timed out waiting for the Companion App" }),
+      );
+      const results = [];
+      document.addEventListener("olorin:status-result", (event) => results.push(event.detail));
+
+      dispatchApiEvent("olorin:status", { id: "status-2" });
+
+      expect(results).toEqual([
+        { id: "status-2", success: false, error: "Timed out waiting for the Companion App" },
+      ]);
+      expect("data" in results[0]).toBe(false);
+    });
+
+    it("prints via a selector and passes inline overrides through verbatim", async () => {
+      addSlip("<p>API slip</p>");
+      const result = lastResultEvent();
+
+      dispatchApiEvent("olorin:print", {
+        id: "job-1",
+        printer: "receipt_printer",
+        selector: "#receipt",
+        copies: 2,
+        duplex: "long",
+        pageWidth: 3.15,
+        pageHeight: 8,
+        marginTop: 0.1,
+        marginRight: 0.2,
+        marginBottom: 0.3,
+        marginLeft: 0.4,
+        orientation: "Portrait",
+      });
+
+      expect(chromeMock.runtime.sendMessage).toHaveBeenCalledWith(
+        {
+          type: "websocket-send",
+          payload: {
+            id: "print",
+            text: "printer-command",
+            content: "<p>API slip</p>",
+            printer: "receipt_printer",
+            copies: 2,
+            duplex: "long",
+            pageWidth: 3.15,
+            pageHeight: 8,
+            marginTop: 0.1,
+            marginRight: 0.2,
+            marginBottom: 0.3,
+            marginLeft: 0.4,
+            orientation: "Portrait",
+          },
+        },
+        expect.any(Function),
+      );
+      await expect(result).resolves.toEqual({ id: "job-1", success: true, error: undefined });
+    });
+
+    it("prints raw content directly and omits the id when the request carried none", () => {
+      const results = [];
+      document.addEventListener("olorin:print-result", (event) => results.push(event.detail));
+
+      dispatchApiEvent("olorin:print", { printer: "label_printer", content: "<p>direct</p>" });
+
+      expect(chromeMock.runtime.sendMessage.mock.calls[0][0].payload).toEqual({
+        id: "print",
+        text: "printer-command",
+        content: "<p>direct</p>",
+        printer: "label_printer",
+      });
+      expect(results).toEqual([{ success: true, error: undefined }]);
+      expect("id" in results[0]).toBe(false);
+    });
+
+    it("reports a missing selector target with the request id", async () => {
+      const result = lastResultEvent();
+
+      dispatchApiEvent("olorin:print", {
+        id: "gone",
+        printer: "receipt_printer",
+        selector: "#missing",
+      });
+
+      await expect(result).resolves.toEqual({
+        id: "gone",
+        success: false,
+        error: "No element matches selector '#missing'",
+      });
+      expect(chromeMock.runtime.sendMessage).not.toHaveBeenCalled();
+    });
+
+    it("kicks the drawer and echoes the id in the drawer result", async () => {
+      chromeMock.runtime.sendMessage.mockImplementation((message, callback) =>
+        callback({ success: true, data: { id: "kick", success: true, printer: "P1" } }),
+      );
+      const result = lastResultEvent("olorin:drawer-result");
+
+      dispatchApiEvent("olorin:kick-drawer", { id: "till-1", printer: "receipt_printer" });
+
+      expect(chromeMock.runtime.sendMessage).toHaveBeenCalledWith(
+        {
+          type: "websocket-send",
+          payload: { id: "kick", text: "kick-drawer", printer: "receipt_printer" },
+        },
+        expect.any(Function),
+      );
+      await expect(result).resolves.toEqual({ id: "till-1", success: true, error: undefined });
+    });
+
+    it("reports an error instead of throwing when the printer is missing", async () => {
+      const printResult = lastResultEvent();
+      dispatchApiEvent("olorin:print", { id: "no-printer", selector: "#receipt" });
+      await expect(printResult).resolves.toEqual({
+        id: "no-printer",
+        success: false,
+        error: "The 'olorin:print' event detail is missing 'printer'",
+      });
+
+      const drawerResult = lastResultEvent("olorin:drawer-result");
+      dispatchApiEvent("olorin:kick-drawer", {});
+      await expect(drawerResult).resolves.toEqual({
+        success: false,
+        error: "The 'olorin:kick-drawer' event detail is missing 'printer'",
+      });
+
+      expect(chromeMock.runtime.sendMessage).not.toHaveBeenCalled();
+    });
+
+    it("reports an error for an olorin:print event with no detail at all", async () => {
+      const result = lastResultEvent();
+
+      document.dispatchEvent(new CustomEvent("olorin:print"));
+
+      await expect(result).resolves.toEqual({
+        success: false,
+        error: "The 'olorin:print' event detail is missing 'printer'",
+      });
+    });
+
+    it("reports an error when neither selector nor content is given", async () => {
+      const result = lastResultEvent();
+
+      dispatchApiEvent("olorin:print", { id: "empty", printer: "receipt_printer" });
+
+      await expect(result).resolves.toEqual({
+        id: "empty",
+        success: false,
+        error: "The 'olorin:print' event detail needs either 'selector' or 'content'",
+      });
+      expect(chromeMock.runtime.sendMessage).not.toHaveBeenCalled();
+    });
+
+    it("correlates concurrent requests by id even when responses arrive out of order", () => {
+      const callbacks = [];
+      chromeMock.runtime.sendMessage.mockImplementation((message, callback) =>
+        callbacks.push(callback),
+      );
+      addSlip("<p>slip content</p>");
+      const results = [];
+      document.addEventListener("olorin:print-result", (event) => results.push(event.detail));
+
+      dispatchApiEvent("olorin:print", {
+        id: "first",
+        printer: "receipt_printer",
+        selector: "#receipt",
+      });
+      dispatchApiEvent("olorin:print", {
+        id: "second",
+        printer: "label_printer",
+        selector: "#receipt",
+      });
+
+      // The companion answers the second request before the first
+      callbacks[1]({ success: true, data: { id: "print", success: false, error: "Out of paper" } });
+      callbacks[0]({ success: true, data: { id: "print", success: true } });
+
+      expect(results).toEqual([
+        { id: "second", success: false, error: "Out of paper" },
+        { id: "first", success: true, error: undefined },
+      ]);
+    });
+
+    it("click-path result events still carry no id", () => {
+      addSlip();
+      const button = addPrintButton({ printer: "receipt_printer", print: "#receipt" });
+      const results = [];
+      document.addEventListener("olorin:print-result", (event) => results.push(event.detail));
+
+      button.click();
+
+      expect(results).toEqual([{ success: true, error: undefined }]);
+      expect("id" in results[0]).toBe(false);
+    });
+  });
 });
