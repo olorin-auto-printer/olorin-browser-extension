@@ -76,8 +76,14 @@ same `{ success, error }` detail shape as `olorin:print-result`.
 
 ## Use with other web applications
 
-Nothing in Olorin depends on Koha. The integration contract for any web
-application is:
+Nothing in Olorin depends on Koha. Two integration styles are available;
+print buttons need zero JavaScript, while the event API is the recommended
+path for applications that drive printing from their own code. Either way,
+printer mappings, page sizes, margins, copies, and duplex are configured
+once per workstation in the extension's Settings page or the companion
+app's window — the page never needs to know about physical printers.
+
+### Print buttons (zero JavaScript)
 
 - Embed an element with id `webPrint` or class `olorinPlugin` carrying
   `data-printer` (one of the five logical printer keys) and `data-print`
@@ -87,9 +93,59 @@ application is:
   the action; the selected element's `innerHTML` is printed silently.
 - Listen for the `olorin:print-result` / `olorin:drawer-result` DOM events
   to react to outcomes.
-- Printer mappings, page sizes, margins, copies, and duplex are configured
-  once per workstation in the extension's Settings page or the companion
-  app's window — the page never needs to know about physical printers.
+
+### The event API (extension 2.1 and later)
+
+The recommended programmatic path — used by the Koha plugin's client
+library, for example — is to dispatch CustomEvents on `document` instead
+of synthesizing clicks on a hidden button. Available from extension 2.1:
+
+| Request event        | Detail fields                                        | Result event           |
+| -------------------- | ---------------------------------------------------- | ---------------------- |
+| `olorin:ping`        | `id?`                                                | `olorin:pong`          |
+| `olorin:status`      | `id?`                                                | `olorin:status-result` |
+| `olorin:print`       | `id?`, `printer`, `selector` or `content`, overrides | `olorin:print-result`  |
+| `olorin:kick-drawer` | `id?`, `printer`                                     | `olorin:drawer-result` |
+
+```javascript
+// Detect the extension: ping is answered immediately with the version
+document.addEventListener("olorin:pong", (e) => console.log(e.detail));
+// e.detail = { id: "hello", version: "2.1.0" }
+document.dispatchEvent(new CustomEvent("olorin:ping", { detail: { id: "hello" } }));
+
+// Ask the companion app for its version and protocol
+document.addEventListener("olorin:status-result", (e) => console.log(e.detail));
+// e.detail = { id: "st-1", success: true, data: { version: "...", protocol: ... } }
+// (companion apps before 2.0 never answer — expect { success: false, error: "Timed out ..." })
+document.dispatchEvent(new CustomEvent("olorin:status", { detail: { id: "st-1" } }));
+
+// Print an element — or pass raw HTML via 'content' instead of 'selector'
+document.dispatchEvent(
+  new CustomEvent("olorin:print", {
+    detail: {
+      id: "job-1", // optional, echoed in the result event
+      printer: "receipt_printer", // one of the five logical printer keys
+      selector: "#receipt", // or: content: "<h1>Receipt</h1>..."
+      copies: 2, // optional per-job overrides, passed through verbatim:
+      duplex: "long", // copies, duplex, pageWidth, pageHeight, marginTop,
+      orientation: "Portrait", // marginRight, marginBottom, marginLeft, orientation
+    },
+  }),
+);
+
+// Open a cash drawer
+document.dispatchEvent(
+  new CustomEvent("olorin:kick-drawer", {
+    detail: { id: "till-1", printer: "receipt_printer" },
+  }),
+);
+```
+
+Outcomes arrive as the same `olorin:print-result` / `olorin:drawer-result`
+events the button flow dispatches. When a request detail carries an `id`,
+the result detail echoes it — dispatch concurrent requests with distinct
+ids and match results by `detail.id`. Requests without an id produce
+results without one, exactly like button clicks.
 
 ## Koha configuration
 

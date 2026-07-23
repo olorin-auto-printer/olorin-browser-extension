@@ -12,6 +12,14 @@ should print.
 
 Notice templates are edited under **Tools → Notices & slips**.
 
+## The Koha plugin (zero-edit deployment)
+
+The `koha-plugin-olorin` Koha plugin wires all of this up automatically —
+no notice templates or system preferences to edit — using the extension's
+event API (extension 2.1 and later). Once released, installing the plugin
+is the recommended deployment; the recipes below remain for manual setups
+and as a reference for what the plugin does.
+
 ## Checkout quick slip (ISSUEQSLIP)
 
 Replace the body of the `ISSUEQSLIP` notice (Print transport) with:
