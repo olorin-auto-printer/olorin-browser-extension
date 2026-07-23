@@ -3,6 +3,9 @@ name: CI
 on:
   push:
   pull_request:
+  schedule:
+    # Nightly at 04:23 UTC to catch breakage from new browser/tool releases
+    - cron: "23 4 * * *"
 
 jobs:
   build-test:
