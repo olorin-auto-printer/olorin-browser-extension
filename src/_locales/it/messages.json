@@ -1,0 +1,140 @@
+{
+  "extDescription": {
+    "message": "Stampa silenziosa di ricevute ed etichette per app web come l'ILS Koha, tramite l'app companion Olorin."
+  },
+  "popupCheckingTitle": {
+    "message": "Verifica"
+  },
+  "popupCheckingText": {
+    "message": "Connessione all'app companion ..."
+  },
+  "popupConnectedTitle": {
+    "message": "App companion connessa"
+  },
+  "popupConnectedText": {
+    "message": "Ora puoi stampare!"
+  },
+  "popupVersionPrefix": {
+    "message": "v"
+  },
+  "popupNotConnectedTitle": {
+    "message": "App companion non connessa"
+  },
+  "popupNotConnectedText": {
+    "message": "Verifica che l'app companion sia in esecuzione."
+  },
+  "popupPermissionTitle": {
+    "message": "Accesso alle pagine richiesto"
+  },
+  "popupPermissionText": {
+    "message": "Olorin ha bisogno di accedere alle pagine della tua biblioteca per trovare i pulsanti di stampa."
+  },
+  "popupGrantAccess": {
+    "message": "Consenti l'accesso"
+  },
+  "popupSettings": {
+    "message": "Impostazioni"
+  },
+  "optionsTitle": {
+    "message": "Impostazioni stampanti di Olorin"
+  },
+  "optionsHeading": {
+    "message": "Impostazioni stampanti"
+  },
+  "optionsRefreshPrinters": {
+    "message": "Aggiorna stampanti"
+  },
+  "optionsErrorBanner": {
+    "message": "App companion non raggiungibile — verifica che sia in esecuzione, poi fai clic su «Aggiorna stampanti»."
+  },
+  "optionsColPrinter": {
+    "message": "Stampante"
+  },
+  "optionsColPageWidth": {
+    "message": "Larghezza pagina"
+  },
+  "optionsColPageHeight": {
+    "message": "Altezza pagina"
+  },
+  "optionsColPrinterOption": {
+    "message": "Stampante di sistema"
+  },
+  "optionsColMargin": {
+    "message": "Margini"
+  },
+  "optionsColMarginTop": {
+    "message": "Superiore"
+  },
+  "optionsColMarginBottom": {
+    "message": "Inferiore"
+  },
+  "optionsColMarginLeft": {
+    "message": "Sinistro"
+  },
+  "optionsColMarginRight": {
+    "message": "Destro"
+  },
+  "optionsColOrientation": {
+    "message": "Orientamento"
+  },
+  "optionsColCopies": {
+    "message": "Copie"
+  },
+  "optionsColDuplex": {
+    "message": "Fronte-retro"
+  },
+  "optionsPrinterReceipt": {
+    "message": "Stampante per ricevute"
+  },
+  "optionsPrinterSticker": {
+    "message": "Stampante per adesivi"
+  },
+  "optionsPrinterPaper": {
+    "message": "Stampante per carta"
+  },
+  "optionsPrinterFullSheet": {
+    "message": "Stampante a pagina intera"
+  },
+  "optionsPrinterLabel": {
+    "message": "Stampante per etichette"
+  },
+  "optionsSelect": {
+    "message": "Seleziona"
+  },
+  "optionsOrientationPortrait": {
+    "message": "Verticale"
+  },
+  "optionsOrientationLandscape": {
+    "message": "Orizzontale"
+  },
+  "optionsOrientationAutomatic": {
+    "message": "Automatico"
+  },
+  "optionsDuplexOff": {
+    "message": "Disattivato"
+  },
+  "optionsDuplexLong": {
+    "message": "Lato lungo"
+  },
+  "optionsDuplexShort": {
+    "message": "Lato corto"
+  },
+  "optionsWidthPlaceholder": {
+    "message": "Larghezza (pollici)"
+  },
+  "optionsHeightPlaceholder": {
+    "message": "Altezza (pollici)"
+  },
+  "optionsMarginPlaceholder": {
+    "message": "(pollici)"
+  },
+  "optionsCopiesPlaceholder": {
+    "message": "1"
+  },
+  "optionsSave": {
+    "message": "Salva"
+  },
+  "optionsSavedToast": {
+    "message": "Mappatura delle stampanti salvata correttamente"
+  }
+}

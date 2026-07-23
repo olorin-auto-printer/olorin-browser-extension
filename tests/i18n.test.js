@@ -38,10 +38,16 @@ describe("i18n annotations", () => {
     });
   }
 
-  it("fr and es translate exactly the keys en defines", () => {
+  it("every non-en locale translates exactly the keys en defines", () => {
     const enKeys = Object.keys(readLocale("en")).sort();
-    expect(Object.keys(readLocale("fr")).sort()).toEqual(enKeys);
-    expect(Object.keys(readLocale("es")).sort()).toEqual(enKeys);
+    const locales = fs
+      .readdirSync(path.join(srcDir, "_locales"), { withFileTypes: true })
+      .filter((entry) => entry.isDirectory() && entry.name !== "en")
+      .map((entry) => entry.name);
+    expect(locales.length).toBeGreaterThan(0);
+    for (const locale of locales) {
+      expect(Object.keys(readLocale(locale)).sort(), `locale '${locale}'`).toEqual(enKeys);
+    }
   });
 });
 

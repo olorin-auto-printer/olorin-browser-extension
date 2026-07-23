@@ -1,0 +1,140 @@
+{
+  "extDescription": {
+    "message": "Stilles Drucken von Belegen und Etiketten für Web-Apps wie das Bibliothekssystem Koha, über die Olorin Companion App."
+  },
+  "popupCheckingTitle": {
+    "message": "Überprüfung"
+  },
+  "popupCheckingText": {
+    "message": "Verbindung zur Companion App ..."
+  },
+  "popupConnectedTitle": {
+    "message": "Companion App verbunden"
+  },
+  "popupConnectedText": {
+    "message": "Sie können jetzt drucken!"
+  },
+  "popupVersionPrefix": {
+    "message": "v"
+  },
+  "popupNotConnectedTitle": {
+    "message": "Companion App nicht verbunden"
+  },
+  "popupNotConnectedText": {
+    "message": "Bitte prüfen Sie, ob die Companion App läuft."
+  },
+  "popupPermissionTitle": {
+    "message": "Seitenzugriff erforderlich"
+  },
+  "popupPermissionText": {
+    "message": "Olorin benötigt Zugriff auf Ihre Bibliotheksseiten, um Druckschaltflächen zu finden."
+  },
+  "popupGrantAccess": {
+    "message": "Zugriff erlauben"
+  },
+  "popupSettings": {
+    "message": "Einstellungen"
+  },
+  "optionsTitle": {
+    "message": "Olorin-Druckereinstellungen"
+  },
+  "optionsHeading": {
+    "message": "Druckereinstellungen"
+  },
+  "optionsRefreshPrinters": {
+    "message": "Drucker aktualisieren"
+  },
+  "optionsErrorBanner": {
+    "message": "Companion App nicht erreichbar — stellen Sie sicher, dass sie läuft, und klicken Sie dann auf „Drucker aktualisieren“."
+  },
+  "optionsColPrinter": {
+    "message": "Drucker"
+  },
+  "optionsColPageWidth": {
+    "message": "Seitenbreite"
+  },
+  "optionsColPageHeight": {
+    "message": "Seitenhöhe"
+  },
+  "optionsColPrinterOption": {
+    "message": "Systemdrucker"
+  },
+  "optionsColMargin": {
+    "message": "Ränder"
+  },
+  "optionsColMarginTop": {
+    "message": "Oben"
+  },
+  "optionsColMarginBottom": {
+    "message": "Unten"
+  },
+  "optionsColMarginLeft": {
+    "message": "Links"
+  },
+  "optionsColMarginRight": {
+    "message": "Rechts"
+  },
+  "optionsColOrientation": {
+    "message": "Ausrichtung"
+  },
+  "optionsColCopies": {
+    "message": "Kopien"
+  },
+  "optionsColDuplex": {
+    "message": "Duplex"
+  },
+  "optionsPrinterReceipt": {
+    "message": "Belegdrucker"
+  },
+  "optionsPrinterSticker": {
+    "message": "Aufkleberdrucker"
+  },
+  "optionsPrinterPaper": {
+    "message": "Papierdrucker"
+  },
+  "optionsPrinterFullSheet": {
+    "message": "Ganzseitendrucker"
+  },
+  "optionsPrinterLabel": {
+    "message": "Etikettendrucker"
+  },
+  "optionsSelect": {
+    "message": "Auswählen"
+  },
+  "optionsOrientationPortrait": {
+    "message": "Hochformat"
+  },
+  "optionsOrientationLandscape": {
+    "message": "Querformat"
+  },
+  "optionsOrientationAutomatic": {
+    "message": "Automatisch"
+  },
+  "optionsDuplexOff": {
+    "message": "Aus"
+  },
+  "optionsDuplexLong": {
+    "message": "Lange Kante"
+  },
+  "optionsDuplexShort": {
+    "message": "Kurze Kante"
+  },
+  "optionsWidthPlaceholder": {
+    "message": "Breite (Zoll)"
+  },
+  "optionsHeightPlaceholder": {
+    "message": "Höhe (Zoll)"
+  },
+  "optionsMarginPlaceholder": {
+    "message": "(Zoll)"
+  },
+  "optionsCopiesPlaceholder": {
+    "message": "1"
+  },
+  "optionsSave": {
+    "message": "Speichern"
+  },
+  "optionsSavedToast": {
+    "message": "Druckerzuordnung erfolgreich gespeichert"
+  }
+}
